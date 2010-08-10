@@ -1,0 +1,8 @@
+﻿See details: http://192.168.1.101:8153/cruise/pipelines/ProjectEuler.NET/21/CI/1
+
+Git: git://github.com/mikeobrien/ProjectEuler.NET.git
+revision: af55e5b718374be78320019c7cc62d08ec3f51b7, modified by Mike O'Brien <mob@mikeobrien.net> on 2010-08-09 19:46:26.0
+Test
+modified src/ProjectEuler.UI/Web.config
+
+Sent by Cruise on behalf of mob
