@@ -4,6 +4,7 @@ namespace GoNotificationInterceptor.Configuration
 {
     public class Section : ConfigurationSection
     {
+        private const string DebugModeAttribute = "debugMode";
         private const string ListenPortAttribute = "listenPort";
         private const string SmtpServerAttribute = "smtpServer";
         private const string SmtpPortAttribute = "smtpPort";
@@ -12,6 +13,12 @@ namespace GoNotificationInterceptor.Configuration
         private const string BodyRegexAttribute = "bodyRegex";
         private const string SubjectStylesheetPathAttribute = "subjectStylesheetPath";
         private const string BodyStylesheetPathAttribute = "bodyStylesheetPath";
+
+        [ConfigurationProperty(DebugModeAttribute)]
+        public bool DebugMode
+        {
+            get { return (bool)this[DebugModeAttribute]; }
+        }
 
         [ConfigurationProperty(ListenPortAttribute)]
         public int ListenPort

@@ -1,28 +1,26 @@
 ﻿using System.Net.Mail;
 using System.Xml.Linq;
+using GoNotificationInterceptor.Configuration;
 
 namespace GoNotificationInterceptor
 {
     public class MessageHandler
     {
-        private int _smtpPort;
-        private string _smtpServer;
+        private IEmailService _emailService;
         private string _rootNodeName;
         private string _subjectRegex;
         private string _bodyRegex;
         private string _subjectStylesheetPath;
         private string _bodyStylesheetPath;
 
-        public MessageHandler(int smtpPort,
-                              string smtpServer,
+        public MessageHandler(IEmailService emailService,
                               string rootNodeName,
                               string subjectRegex,
                               string bodyRegex,
                               string subjectStylesheetPath,
                               string bodyStylesheetPath)
         {
-            _smtpPort = smtpPort;
-            _smtpServer = smtpServer;
+            _emailService = emailService;
             _rootNodeName = rootNodeName;
             _subjectRegex = subjectRegex;
             _bodyRegex = bodyRegex;
@@ -39,8 +37,7 @@ namespace GoNotificationInterceptor
                 message.Body = document.Transform(_bodyStylesheetPath);
                 message.IsBodyHtml = _bodyStylesheetPath.OpenPathAsXDocument().IsHtmlStylesheet();                
             }
-            var smtpClient = new SmtpClient(_smtpServer, _smtpPort);
-            smtpClient.Send(message);
+            _emailService.Send(message);
         }
     }
 }

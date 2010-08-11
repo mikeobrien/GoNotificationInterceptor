@@ -1,8 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Net.Mail;
 using System.Threading;
 using EricDaugherty.CSES.Net;
 using EricDaugherty.CSES.SmtpServer;
+using GoNotificationInterceptor.Configuration;
 
 namespace GoNotificationInterceptor
 {
@@ -41,6 +43,11 @@ namespace GoNotificationInterceptor
 
             public bool SpoolMessage(SMTPMessage message)
             {
+                if (Manager.Current.Application.DebugMode)
+                    File.WriteAllText(
+                        string.Format("In.{0:yyyyMMddhhmmssfffffff}.msg", DateTime.Now),
+                        message.Data);
+
                 ThreadPool.QueueUserWorkItem(x =>
                         {
                             var netMessage = new MailMessage

@@ -11,8 +11,8 @@ namespace GoNotificationInterceptor
         public Application()
         {
             var application = Manager.Current.Application;
-            _handler = new MessageHandler(application.SmtpPort,
-                                          application.SmtpServer,
+            _handler = new MessageHandler(new EmailService(application.SmtpServer, 
+                                                           application.SmtpPort),
                                           application.RootNodeName,
                                           application.SubjectRegex,
                                           application.BodyRegex,
