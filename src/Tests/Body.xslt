@@ -4,16 +4,16 @@
 
   <xsl:template match="go">
 
-    <xsl:variable name="host" select="substring-before(detailsUrl, '/cruise/')" />
+    <xsl:variable name="host" select="substring-before(detailsUrl, '/go/')" />
     <!-- 
-      <xsl:variable name="host" select="substring-before(detailsUrl, '/cruise/')" />
+      <xsl:variable name="host" select="substring-before(detailsUrl, '/go/')" />
       <xsl:variable name="host" select="'http://localhost:8153'" /> 
       -->
 
     <xsl:variable name="defaultJob" select="'defaultJob'" />
 
-    <xsl:variable name="stageHistoryUrl" select="concat($host, '/cruise/tab/pipeline/history/', pipeline)" />
-    <xsl:variable name="jobDetailUrl" select="concat($host, '/cruise/tab/build/detail/', pipeline, '/', label, '/', stage, '/', job, '/', $defaultJob)" />
+    <xsl:variable name="stageHistoryUrl" select="concat($host, '/go/tab/pipeline/history/', pipeline)" />
+    <xsl:variable name="jobDetailUrl" select="concat($host, '/go/tab/build/detail/', pipeline, '/', label, '/', stage, '/', job, '/', $defaultJob)" />
     <xsl:variable name="jobDetailMaterialsUrl" select="concat($jobDetailUrl, '#tab-materials')" />
     <xsl:variable name="jobDetailTestsUrl" select="concat($jobDetailUrl, '#tab-tests')" />
     <xsl:variable name="jobDetailArtifactsUrl" select="concat($jobDetailUrl, '#tab-artifacts')" />

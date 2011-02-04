@@ -10,8 +10,8 @@ namespace GoNotificationInterceptor
 {
     public class SmtpServer
     {
-        private SimpleServer _server;
-        private SMTPProcessor _processor;
+        private readonly SimpleServer _server;
+        private readonly SMTPProcessor _processor;
 
         public SmtpServer(int port, Action<MailMessage> messageHandler)
         {
@@ -34,7 +34,7 @@ namespace GoNotificationInterceptor
 
         private class MessageSpoolProxy : IMessageSpool
         {
-            private Action<MailMessage> _handleMessage;
+            private readonly Action<MailMessage> _handleMessage;
 
             public MessageSpoolProxy(Action<MailMessage> messageHandler)
             {
